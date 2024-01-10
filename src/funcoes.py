@@ -15,7 +15,7 @@ def leituraDados():
     #Load all dataframes
     dfList = []
     d = 'data/artistas'
-    #Lista json de obras de artistas
+    #Json list with all works of the artists
     artistasFiles = [os.path.join(d,o) for o in os.listdir(d) if os.path.isfile(os.path.join(d,o))]
 
     for artista in artistasFiles:
@@ -35,11 +35,8 @@ def leituraDados():
     return dfAll 
 
 def getPaths(artista, ano):
-    # print(ano)
     df = leituraDados()
     df = df[df['artistName']==artista]
 
     df = df[df['completitionYear']==int(ano)]
-    # print(df)
-    #return df['path'].to_list()
     return df[['title', 'genre', 'style', 'path']]

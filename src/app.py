@@ -22,7 +22,7 @@ from paleta2Vis import Paleta2Vis
 # Variaveis do dash
 app = dash.Dash(__name__)
 server = app.server
-server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/')
+# server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/')
 
 listaArtistas = [ ['van Gogh Vincent ','Vincent van Gogh'], ['Picasso Pablo', 'Pablo Picasso '], ['Mondrian Piet', 'Piet Mondrian'], ['Kahlo Frida ','Frida Kahlo'], ['Warhol Andy','Andy Warhol'], ['Botticelli Sandro ', 'Sandro Botticelli']]
 listaVisualizacoes = [ ['paleta1', 'Paleta de cores 1'], ['paleta2', 'Paleta de cores 2'] , ['estilo', 'Estilos das obras'], ['genero', 'Gêneros das obras']]
@@ -35,7 +35,6 @@ def renderImages(listPaths, listTitles, listStyles, listGenre):
     divList = []
     for img, titulo, estilo, genero in zip(listPaths, listTitles, listStyles,listGenre):
        
-        # encoded_image = base64.b64encode(open(img, 'rb').read())
         divList.append(html.Div([
             html.Img(src=img, className = 'image-workart',  
             title=f"Título: {titulo}\nEstilo: {estilo}\nGênero: {genero}"),
@@ -88,6 +87,7 @@ app.layout = html.Div(children=[
 ])
 
 
+# Changes visualization type
 @app.callback(
     Output('visualizacao', 'figure'),
     Input('dropdown_artista', 'value'),
@@ -122,19 +122,13 @@ def update_graph(dropdown_artista, dropdown_visualizacao, clickData):
 
     elif(dropdown_visualizacao == 'estilo'):
         return estiloVis.func_estilo(dropdown_artista)
-        #if(clickData is None):
-        #    return estiloVis.func_estilo(dropdown_artista)
-        #else:
-        #    return estiloVis.func_estilo(dropdown_artista)
+
     
     elif(dropdown_visualizacao == 'genero'):
         return generoVis.func_genero(dropdown_artista)
-        #if(clickData is None):
-        #    return generoVis.func_genero(dropdown_artista)
-        #else:
-        #    return generoVis.func_genero(dropdown_artista)
 
 
+# Display the images
 @app.callback(
     Output('image-sub-container', 'children'),
     Input('visualizacao', 'clickData'),
@@ -163,6 +157,7 @@ def display_images(clickData, dropdown_artista,dropdown_visualizacao):
             return renderImages(listPaths, listTitles, listStyles, listGenre)
 
 
+# Show details of the image
 @app.callback(
     Output('titulo-imagem-container', 'children'),
     Input('visualizacao', 'clickData'),
