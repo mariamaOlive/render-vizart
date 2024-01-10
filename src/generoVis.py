@@ -46,7 +46,7 @@ def func_genero(artista = 'van Gogh Vincent '):
         fig.add_trace(go.Scatter(
             x=x, y=y,
             #hoverinfo='x+y',
-            hovertemplate = 'Proporção: %{y:.2f}%',#'Ano: %{x}<br>Proporção: %{y:.2f}%'
+            hovertemplate = 'Percentage: %{y:.2f}%',#'Ano: %{x}<br>Proporção: %{y:.2f}%'
             mode='lines',
             opacity=0.5,
             line=dict(width=0.5, color=paletaCores[i]),
@@ -56,10 +56,10 @@ def func_genero(artista = 'van Gogh Vincent '):
             name = genero
     ))
     
-    titulo='Gêneros mais populares ao longo dos anos'
-    eixox='Ano'
-    eixoy='Proporção dos gêneros'
-    legenda='Gênero'
+    titulo='Most popular genres along the years'
+    eixox='Year'
+    eixoy='Genre percentage'
+    legenda='Genre'
     fig.update_layout(
         title=titulo,
         xaxis_title=eixox,
@@ -70,7 +70,7 @@ def func_genero(artista = 'van Gogh Vincent '):
         font=dict(
             family="Courier New, monospace",
             size=18,
-            color="RebeccaPurple"
+            color="#232023"
         )
     )
 

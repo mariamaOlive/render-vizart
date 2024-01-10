@@ -30,12 +30,12 @@ def func_estilo(artista = 'van Gogh Vincent '):
     dfVis = pd.DataFrame({'count' :  df[df['artistName']==artista].groupby(['style','completitionYear'])['style'].size()}).reset_index()
 
     fig = px.bar(dfVis, x="completitionYear", y="count", color="style",labels={
-                     "completitionYear": "Ano",
-                     "count": "Quantidade",
-                     "style": "Estilo"
+                     "completitionYear": "Year",
+                     "count": "Number of works",
+                     "style": "Art Movement"
                  },
                 #hover_name="Estilo", hover_data="style",
-                title="Estilo ao longo dos anos")
+                title="Art Movement in time")
 
     fig.update_layout(
     #font_family="Courier New, monospace",
@@ -43,7 +43,7 @@ def func_estilo(artista = 'van Gogh Vincent '):
     font=dict(
             family="Courier New, monospace",
             size=18,
-            color="RebeccaPurple"
+            color="#232023"
         )
     )
     

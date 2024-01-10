@@ -25,7 +25,7 @@ server = app.server
 # server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/')
 
 listaArtistas = [ ['van Gogh Vincent ','Vincent van Gogh'], ['Picasso Pablo', 'Pablo Picasso '], ['Mondrian Piet', 'Piet Mondrian'], ['Kahlo Frida ','Frida Kahlo'], ['Warhol Andy','Andy Warhol'], ['Botticelli Sandro ', 'Sandro Botticelli']]
-listaVisualizacoes = [ ['paleta1', 'Paleta de cores 1'], ['paleta2', 'Paleta de cores 2'] , ['estilo', 'Estilos das obras'], ['genero', 'Gêneros das obras']]
+listaVisualizacoes = [ ['paleta1', 'Color palette 1'], ['paleta2', 'Color palette 2'] , ['estilo', 'Art Movement'], ['genero', 'Genre']]
 
 paleta2Vis = Paleta2Vis()
 
@@ -37,7 +37,7 @@ def renderImages(listPaths, listTitles, listStyles, listGenre):
        
         divList.append(html.Div([
             html.Img(src=img, className = 'image-workart',  
-            title=f"Título: {titulo}\nEstilo: {estilo}\nGênero: {genero}"),
+            title=f"Title: {titulo}\nArt Movement: {estilo}\nGenre: {genero}"),
         ],
          className = 'div-image'))
     return divList
@@ -50,7 +50,7 @@ app.layout = html.Div(children=[
         children='VisArt',
         id = 'titulo'),
         html.H5(
-        children='A EVOLUÇÃO DA ARTE',
+        children='THE ART EVOLUTION',
         id = 'subtitulo')
         ], id = 'titulo-app'),
     html.Div([
