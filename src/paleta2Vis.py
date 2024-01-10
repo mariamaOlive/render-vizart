@@ -73,7 +73,7 @@ class Paleta2Vis:
                     mode='markers',
                     x=[x],
                     y=[y],
-                    hovertemplate = 'Ano: %{x}<br>Cor: %{text}',#'Ano: %{x}<br>RGB: %{cor}',
+                    hovertemplate = 'Year: %{x}<br>Color: %{text}',#'Ano: %{x}<br>RGB: %{cor}',
                     text = [color],
                     #text = [cor_rgb], #se quiser o hexa é só usar [color]
                     #text = ['Custom text {}'.format(i + 1) for i in range(5)],
@@ -89,9 +89,9 @@ class Paleta2Vis:
                 )
             )
 
-        titulo='Paleta de cores ao longo dos anos'
-        eixox='Ano'
-        eixoy='Cores'
+        titulo='Color palette along the years'
+        eixox='Year'
+        eixoy='Colors'
         fig.update_layout(
             title=titulo,
             xaxis_title=eixox,
@@ -102,7 +102,7 @@ class Paleta2Vis:
             font=dict(
                 family="Courier New, monospace",
                 size=18,
-                color="RebeccaPurple"
+                color="#232023"
             ),
             clickmode='event'
         )
